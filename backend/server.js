@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.json({
     status: "online",
     message: "🍬 Sweet Store API is running smoothly!",
-    endpoints: ["/api/auth/login", "/api/auth/register", "/api/getProduct", "/api/addProduct", "/api/orders"]
+    endpoints: ["/api/auth/login", "/api/auth/register", "/api/getProduct", "/api/addProduct", "/api/orders", "/api/test-email"]
   });
 });
 

@@ -18,13 +18,14 @@ This repository contains two parts:
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
 5. Under **Environment Variables**, add:
-   - `PORT`: `5000` (or leave default assigned by Render)
-   - `MONGO_URI`: `mongodb+srv://...` (your MongoDB Atlas connection string)
-   - `EMAIL_USER`: `nanthakumar2006geetha02email@gmail.com`
+   - `PORT`: `5000`
+   - `MONGO_URI`: `mongodb://bakery:1234b@ac-voeywnv-shard-00-00.xlugv4t.mongodb.net:27017,ac-voeywnv-shard-00-01.xlugv4t.mongodb.net:27017,ac-voeywnv-shard-00-02.xlugv4t.mongodb.net:27017/bakery?ssl=true&replicaSet=atlas-1363ah-shard-0&authSource=admin&appName=nanth`
+   - `EMAIL_USER`: `nanthakumar2006geetha02@gmail.com`
    - `EMAIL_PASS`: `czqo mpur tdwk svqr`
-   - `JWT_SECRET`: `sweetstore_super_secret_jwt_key_2026`
-6. Click **Create Web Service**.
+   - `JWT_SECRET`: `secret123`
+6. Click **Create Web Service** (or **Manual Deploy** -> **Clear build cache & deploy** if already created).
 7. Copy your deployed backend URL (e.g., `https://sweet-store-backend.onrender.com`).
+8. **Verify Email Live**: Open `https://<YOUR-RENDER-BACKEND-URL>/api/test-email` in your browser to verify if SMTP is connected and environment variables are active!
 
 ---
 

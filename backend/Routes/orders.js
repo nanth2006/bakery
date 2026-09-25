@@ -1,8 +1,27 @@
 import express from "express";
 import Order from "../models/order.js";
-import { sendOrderEmail } from "../utills/sendmail.js";
+import { sendOrderEmail, verifyEmailService } from "../utills/sendmail.js";
 
 const router = express.Router();
+
+// Diagnostic endpoint to test email configuration live
+router.get("/test-email", async (req, res) => {
+  try {
+    const status = await verifyEmailService();
+    res.status(200).json({
+      success: true,
+      service: "Email Diagnostics",
+      environment: {
+        EMAIL_USER_SET: !!process.env.EMAIL_USER,
+        EMAIL_PASS_SET: !!process.env.EMAIL_PASS,
+        EMAIL_USER_VALUE: process.env.EMAIL_USER || "NOT CONFIGURED IN RENDER"
+      },
+      status
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 // Create new order
 router.post("/orders", async (req, res) => {
@@ -17,28 +36,39 @@ router.post("/orders", async (req, res) => {
       return res.status(400).json({ success: false, message: "Complete delivery address is required" });
     }
 
+    const customerEmail = (userEmail || address.email || "").trim().toLowerCase();
+
     const order = new Order({
       items,
       totalAmount,
       discount: discount || 0,
-      address,
+      address: {
+        ...address,
+        email: customerEmail
+      },
       paymentMethod: paymentMethod || "COD",
       paymentStatus: paymentStatus || (paymentMethod === "COD" ? "Pending" : "Awaiting Verification"),
       orderStatus: "Placed",
-      userEmail: userEmail ? userEmail.trim().toLowerCase() : "",
+      userEmail: customerEmail,
       customerName: address.name,
       notes: notes || ""
     });
 
     const savedOrder = await order.save();
 
-    // Send email asynchronously in background
-    sendOrderEmail(savedOrder).catch((e) => console.log("Email background error:", e.message));
+    // Dispatch email notification and await with error-catching
+    let emailResult = null;
+    try {
+      emailResult = await sendOrderEmail(savedOrder);
+    } catch (e) {
+      console.error("Order email error:", e.message);
+    }
 
     res.status(201).json({
       success: true,
       message: "Order placed successfully!",
-      order: savedOrder
+      order: savedOrder,
+      emailStatus: emailResult
     });
   } catch (err) {
     console.error("Order Creation Error:", err);

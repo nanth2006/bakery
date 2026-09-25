@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useCart } from './context/cartcontext';
+import { useCart } from './context/cartcontext.jsx';
 import Navbar from './navbar/navbar.jsx';
+import API_BASE_URL from './config/api.js';
 import {
   ShoppingBag,
   Trash2,
@@ -124,7 +125,7 @@ function Checkout() {
     };
 
     try {
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch(`${API_BASE_URL}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData)
@@ -144,7 +145,7 @@ function Checkout() {
         setError(data.message || data.error || 'Failed to place order. Please check your connection and try again.');
       }
     } catch (err) {
-      setError('Server connection error. Please make sure backend is running on port 5000.');
+      setError('Server connection error. Please ensure backend is running.');
       console.error(err);
     } finally {
       setPlacing(false);

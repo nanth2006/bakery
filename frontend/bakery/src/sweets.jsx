@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from './context/cartcontext';
+import { useCart } from './context/cartcontext.jsx';
+import API_BASE_URL from './config/api.js';
 import { 
   Search, 
   Sparkles, 
@@ -58,7 +59,7 @@ function Sweets({ refreshKey, onEditProduct }) {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/getProduct');
+      const res = await fetch(`${API_BASE_URL}/api/getProduct`);
       const data = await res.json();
       if (Array.isArray(data)) {
         setProducts(data);
@@ -75,7 +76,7 @@ function Sweets({ refreshKey, onEditProduct }) {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:5000/api/deleteProduct/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/deleteProduct/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './navbar/navbar.jsx';
+import API_BASE_URL from './config/api.js';
 import { 
   Package, 
   Clock, 
@@ -34,9 +35,9 @@ function Orders() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      let url = 'http://localhost:5000/api/orders';
+      let url = `${API_BASE_URL}/api/orders`;
       if (userEmail) {
-        url = `http://localhost:5000/api/orders/user/${encodeURIComponent(userEmail)}`;
+        url = `${API_BASE_URL}/api/orders/user/${encodeURIComponent(userEmail)}`;
       }
 
       const res = await fetch(url);

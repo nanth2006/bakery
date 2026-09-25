@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from './navbar/navbar.jsx';
 import AddSWeet from './addsweet.jsx';
+import API_BASE_URL from './config/api.js';
 import { 
   ShieldCheck, 
   Package, 
@@ -44,8 +45,8 @@ function AdminDashboard() {
     setLoading(true);
     try {
       const [ordersRes, sweetsRes] = await Promise.all([
-        fetch('http://localhost:5000/api/orders'),
-        fetch('http://localhost:5000/api/getProduct')
+        fetch(`${API_BASE_URL}/api/orders`),
+        fetch(`${API_BASE_URL}/api/getProduct`)
       ]);
 
       const ordersData = await ordersRes.json();
@@ -62,7 +63,7 @@ function AdminDashboard() {
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/orders/${orderId}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderStatus: newStatus })
@@ -81,7 +82,7 @@ function AdminDashboard() {
   const handleDeleteOrder = async (orderId) => {
     if (!window.confirm("Are you sure you want to delete this order record?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+      const res = await fetch(`${API_BASE_URL}/api/orders/${orderId}`, {
         method: 'DELETE'
       });
       if (res.ok) {
@@ -95,7 +96,7 @@ function AdminDashboard() {
   const handleDeleteSweet = async (sweetId, name) => {
     if (!window.confirm(`Are you sure you want to remove "${name}" from inventory?`)) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/deleteProduct/${sweetId}`, {
+      const res = await fetch(`${API_BASE_URL}/api/deleteProduct/${sweetId}`, {
         method: 'DELETE'
       });
       if (res.ok) {

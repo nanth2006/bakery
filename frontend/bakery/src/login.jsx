@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import logo from "../frontend/logo.png"
+import logo from "./logo.png";
+import API_BASE_URL from './config/api.js';
 import { 
   Sparkles, 
   Lock, 
@@ -28,7 +29,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), password: pass }),
@@ -55,7 +56,6 @@ function Login() {
     }
   };
 
-
   return (
     <div className="min-h-screen w-full bg-[#2A0C13] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background glow and imagery */}
@@ -74,7 +74,7 @@ function Login() {
         {/* Brand Header */}
         <div className="text-center mb-8">
           <div className="w-14 h-14 rounded-full bg-[#4A1521] text-[#E8A33D] flex items-center justify-center mx-auto mb-3 shadow-lg border border-[#E8A33D]/50">
-            <span className="text-2xl rounded-full"><img className='rounded-full' src={logo} alt="" /></span>
+            <span className="text-2xl rounded-full"><img className='rounded-full' src={logo} alt="Nanthana Bakery Logo" /></span>
           </div>
           <h1 className="font-serif text-3xl font-bold text-[#4A1521]">
             Nanthana Bakery
@@ -140,15 +140,12 @@ function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 bg-[#4A1521] hover:bg-[#320E16] text-[#FDF8F0] font-bold text-xs uppercase tracking-wider py-3 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full mt-2 bg-[#4A1521] hover:bg-[#320E16] text-[#FDF8F0] font-bold text-xs uppercase tracking-wider py-3 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
           >
             <LogIn className="w-4 h-4 text-[#E8A33D]" />
             <span>{loading ? "Logging in..." : "Log In to Store"}</span>
           </button>
         </form>
-
-        {/* Quick Demo Credentials helper */}
-       
 
         {/* Register footer link */}
         <div className="mt-6 text-center text-xs text-[#785E4F]">

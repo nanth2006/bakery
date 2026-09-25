@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './navbar/navbar.jsx';
+import API_BASE_URL from './config/api.js';
 import {
   Award,
   Sparkles,
@@ -32,7 +33,7 @@ function About() {
     setSending(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/inquiry', {
+      const res = await fetch(`${API_BASE_URL}/api/inquiry`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(inquiry)
@@ -50,7 +51,7 @@ function About() {
         setError(data.message || 'Failed to send inquiry. Please try again.');
       }
     } catch (err) {
-      setError('Server connection error. Please make sure backend is running on port 5000.');
+      setError('Server connection error. Please make sure the backend is reachable.');
     } finally {
       setSending(false);
     }

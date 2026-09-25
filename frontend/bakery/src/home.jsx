@@ -161,49 +161,49 @@ function Home() {
       </section>
 
       {/* VALUE PILLARS & FEATURES STRIP */}
-   <section className="bg-[#FAF1E4] border-y border-[#E8A33D]/30 py-8 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-3">
-      <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
-        <Award className="w-6 h-6" />
-      </div>
-      <div>
-        <h4 className="font-bold text-sm text-[#4A1521]">100% Pure Desi Ghee</h4>
-        <p className="text-xs text-[#785E4F]">No palm oil, no artificial preservatives</p>
-      </div>
-    </div>
+      <section className="bg-[#FAF1E4] border-y border-[#E8A33D]/30 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-3">
+            <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
+              <Award className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-[#4A1521]">100% Pure Desi Ghee</h4>
+              <p className="text-xs text-[#785E4F]">No palm oil, no artificial preservatives</p>
+            </div>
+          </div>
 
-    <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-2">
-      <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
-        <Clock className="w-6 h-6" />
-      </div>
-      <div>
-        <h4 className="font-bold text-sm text-[#4A1521]">Fresh Daily Morning</h4>
-        <p className="text-xs text-[#785E4F]">Prepared fresh every single sunrise</p>
-      </div>
-    </div>
+          <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-2">
+            <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
+              <Clock className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-[#4A1521]">Fresh Daily Morning</h4>
+              <p className="text-xs text-[#785E4F]">Prepared fresh every single sunrise</p>
+            </div>
+          </div>
 
-    <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-2">
-      <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
-        <Truck className="w-6 h-6" />
-      </div>
-      <div>
-        <h4 className="font-bold text-sm text-[#4A1521]">Fast Safe Delivery</h4>
-        <p className="text-xs text-[#785E4F]">Hygienic aroma-locked box packaging</p>
-      </div>
-    </div>
+          <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-2">
+            <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
+              <Truck className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-[#4A1521]">Fast Safe Delivery</h4>
+              <p className="text-xs text-[#785E4F]">Hygienic aroma-locked box packaging</p>
+            </div>
+          </div>
 
-    <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-2">
-      <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
-        <Gift className="w-6 h-6" />
-      </div>
-      <div>
-        <h4 className="font-bold text-sm text-[#4A1521]">Celebration Boxes</h4>
-        <p className="text-xs text-[#785E4F]">Wedding & festive corporate gifts</p>
-      </div>
-    </div>
-  </div>
-</section>
+          <div className="flex items-center gap-4 bg-white/70 p-4 rounded-2xl border border-[#E8A33D]/20 shadow-xs transition-transform duration-300 hover:-translate-y-2">
+            <div className="w-12 h-12 rounded-xl bg-[#4A1521] text-[#E8A33D] flex items-center justify-center shrink-0">
+              <Gift className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-[#4A1521]">Celebration Boxes</h4>
+              <p className="text-xs text-[#785E4F]">Wedding & festive corporate gifts</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ADMIN CONTROLS STRIP (IF ADMIN) */}
       {isAdmin && (
